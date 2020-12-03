@@ -10,7 +10,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $parasiswa = Siswa::all();
+        $parasiswa = Siswa::paginate(5);
         return view('welcome', compact('parasiswa'));
     }
 
@@ -36,4 +36,39 @@ class SiswaController extends Controller
         $siswa->save();
         return redirect(route('create'))->with('successMsg', 'Berhasil ditambah');
     }
+
+    public function edit($id){
+        $siswa = Siswa::find($id);
+        return view('edit',compact('siswa'));
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $siswa = Siswa::find($id);
+        $siswa->firstname = $request->firstname;
+        $siswa->lastname = $request->lastname;
+        $siswa->email = $request->email;
+        $siswa->phone = $request->phone;
+        $siswa->save();
+        return redirect(route('home'))->with('successMsg', 'Berhasil diubah');
+    }
+
+
+    public function delete($id){
+
+        Siswa::find($id)->delete();
+        return redirect(route('home'))->with('successMsg', 'Berhasil dihapus');
+
+    }
+
+
+
+
+
 }
