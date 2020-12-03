@@ -10,7 +10,8 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $parasiswa = Siswa::all();
+        return view('welcome', compact('parasiswa'));
     }
 
     public function create()
