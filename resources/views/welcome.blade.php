@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-        <h1>Data Mahasiswa</h1>
+        <h1>Data Mahasiswa 2021</h1>
 
         <table class="table">
             <thead class="zad-header-kolom" style="background-color:background-color: #f1fffe !important">
@@ -54,8 +54,8 @@
                                         <div class="modal-footer justify-content-center">
                                             <a type="button" class="btn btn-warning"
                                                 onclick="
-                                                                                  event.preventDefault();
-                                                                                  document.getElementById('delete-form-{{ $siswa->id }}').submit();">Ya</a>
+                                                                                      event.preventDefault();
+                                                                                      document.getElementById('delete-form-{{ $siswa->id }}').submit();">Ya</a>
                                             <a type="button" class="btn btn-outline-warning waves-effect"
                                                 data-dismiss="modal">Jangan</a>
                                         </div>
